@@ -26,4 +26,6 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
 
 ## Authors
-[Abdurahman Mahammedsied](https://github.com/amirasabdu) [Kieran Hirsh](https://github.com/kieranhirsh)
+[Abdurahman Mahammedsied](https://github.com/amirasabdu)
+###
+[Kieran Hirsh](https://github.com/kieranhirsh)
