@@ -43,7 +43,7 @@ The main program starts by identifying the call type, then directs it to the app
   - After that, it executes the interactive command.
   - Finally, if the user wants to exit type "exit", the program exits. If no, it loops back to the block waiting for command.
 ###
-![Flow chart.png](https://github.com/kieranhirsh/holbertonschool-simple_shell/blob/main/Flowchart%20(1).png)
+![Flowchart.png](https://github.com/kieranhirsh/holbertonschool-simple_shell/blob/main/Flowchart.png)
 
 ## Authors
 [Abdurahman Mahammedsied](https://github.com/amirasabdu)
