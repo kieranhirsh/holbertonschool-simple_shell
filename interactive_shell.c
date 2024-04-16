@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "simple_shell.h"
 
 /**
@@ -7,5 +8,14 @@
  */
 void interactive_shell(void)
 {
-	printf("I am an interactive shell\n");
+	char *prompt = NULL;
+	size_t buffersize = 0;
+
+	do {
+		printf("What is thy bidding, master?$ ");
+		getline(&prompt, &buffersize, stdin);
+		printf("You have chosen: %s", prompt);
+
+	} while (strcmp(prompt, "exit\n") != 0);
+
 }
