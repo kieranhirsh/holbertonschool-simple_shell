@@ -3,7 +3,7 @@
 #include "simple_shell.h"
 
 /**
- * get_args - reads the command line prompt
+ * get_command - reads the command line prompt
  *
  * Return: a pointer to the char storing the command line prompt
  *
