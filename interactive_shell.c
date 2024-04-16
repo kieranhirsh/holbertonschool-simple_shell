@@ -9,11 +9,10 @@
 void interactive_shell(void)
 {
 	char *prompt = NULL;
-	size_t buffersize = 0;
 
 	do {
 		printf("What is thy bidding, master?$ ");
-		getline(&prompt, &buffersize, stdin);
+		prompt = get_command();
 		printf("You have chosen: %s", prompt);
 
 	} while (strcmp(prompt, "exit\n") != 0);

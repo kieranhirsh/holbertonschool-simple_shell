@@ -3,5 +3,6 @@
 
 void interactive_shell(void);
 void noninteractive_shell(void);
+char *get_command(void);
 
 #endif
