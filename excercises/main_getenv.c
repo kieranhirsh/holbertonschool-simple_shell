@@ -3,9 +3,10 @@
 char *_getenv(const char *name);
 
 /**
- * main - call _getenv
+ * main - calls _getenv
  *
  * Return: always 0
+ *
  */
 int main(int argc, char **argv)
 {
