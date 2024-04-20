@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
-char *_getenv(const char *name);
+#include "path.h"
 
 /**
  * main - prints $PATH, one directory at a time
@@ -12,13 +11,19 @@ char *_getenv(const char *name);
 int main()
 {
 	char *path, *directory;
+	dlistchar_t *head;
 
+	head = NULL;
+	
 	path = _getenv("PATH");
 	directory = strtok(path, ":");
-	printf("%s\n", directory);
+	add_dnodechar_end(&head, directory);
 
 	while ((directory = strtok(NULL, ":")) != NULL)
-		printf("%s\n", directory);
+		add_dnodechar_end(&head, directory);
+
+	print_dlistchar(head);
+	free_dlistchar(head);
 
 	return (0);
 
