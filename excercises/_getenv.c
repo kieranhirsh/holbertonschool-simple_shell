@@ -1,7 +1,7 @@
 #include <stddef.h>
 
 /**
- * _getenv - retruns an environment variable
+ * _getenv - returns an environment variable
  * @name: the desired environment variable
  *
  * Return: the environment variable
