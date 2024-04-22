@@ -1,7 +1,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "simple_shell.h"
 
 /**
@@ -14,9 +16,11 @@
 void execute_command(char *command, char **args, dlistchar_t *path)
 {
 	char *filepath = NULL;
-	int lenpath;
+	extern char **environ;
+	int lenpath, status;
 	int lencommand = 0;
 	struct stat st;
+        pid_t pid, my_pid, parent_pid;
 
 	while (command[lencommand] != NULL)
 	{
@@ -48,12 +52,30 @@ void execute_command(char *command, char **args, dlistchar_t *path)
 	} while ((stat(filepath, &st) != 0) && (path != NULL));
 
 	if (path == NULL)
+	{
 		printf("%s: command not found\n", filepath);
+	}
 	else
-		printf("%s: command found\n", filepath);
-
-
+	{
+		pid = fork();
+		if (pid == 0)
+		{
+			if (execve(filepath, args, environ) == -1)
+			{
+				printf("error executing command: %s\n", filepath);
+			}
+		}
+		else if (pid < 0)
+		{
+			perror("error in fork()\n");
+		}
+		else
+		{
+                        wait(&status);
+		}
+	}
 
 	free(filepath);
 
 }
+
