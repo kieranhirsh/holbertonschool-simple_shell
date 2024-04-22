@@ -6,5 +6,25 @@
  */
 void noninteractive_shell(void)
 {
-	printf("I am a non-interactive shell\n");
+	char *prompt = NULL;
+	char **args;
+	dlistchar_t *path;
+
+	path = get_path();
+
+	do {
+		printf("$ ");
+
+		free(prompt);
+		prompt = read_line_from_stdin();
+		args = get_args(prompt);
+		execute_command(prompt, args, path);
+
+		free(args);
+
+	} while (strcmp(prompt, "exit") != 0);
+
+	free(prompt);
+	free_dlistchar(path);
+
 }
