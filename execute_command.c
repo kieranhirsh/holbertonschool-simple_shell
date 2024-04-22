@@ -44,16 +44,13 @@ void execute_command(char *command, char **args, dlistchar_t *path)
 		}
 		sprintf(filepath, "%s/%s", path->str, command);
 
-		printf("path->str = %s:\n", path->str);
-		printf("filepath = %s:\n", filepath);
-		printf("stat = %i:\n", stat(filepath, &st));
 		path = path->next;
 
 	} while ((stat(filepath, &st) != 0) && (path != NULL));
 
 	if (path == NULL)
 	{
-		printf("%s: command not found\n", filepath);
+		printf("%s: command not found\n", command);
 	}
 	else
 	{
@@ -62,12 +59,12 @@ void execute_command(char *command, char **args, dlistchar_t *path)
 		{
 			if (execve(filepath, args, environ) == -1)
 			{
-				printf("error executing command: %s\n", filepath);
+				perror("error in execute_command: child process cannot execute command\n");
 			}
 		}
 		else if (pid < 0)
 		{
-			perror("error in fork()\n");
+			perror("error in execute_command: fork failed\n");
 		}
 		else
 		{

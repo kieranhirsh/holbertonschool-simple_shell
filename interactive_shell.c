@@ -17,23 +17,12 @@ void interactive_shell(void)
 	path = get_path();
 
 	do {
-		printf("What is thy bidding, master?$ ");
+		printf("$ ");
+
 		free(prompt);
 		prompt = get_command();
 		args = get_args(prompt);
 		execute_command(prompt, args, path);
-		printf("You have chosen: %s\n", prompt);
-
-		ii = 0;
-		if (args[ii] != NULL)
-		{
-			printf("\nYou are very argumentative\n");
-			while (args[ii] != NULL)
-			{
-				printf("argument #%i: %s\n", ii, args[ii]);
-				ii += 1;
-			}
-		}
 
 		free(args);
 
@@ -41,5 +30,6 @@ void interactive_shell(void)
 
 	free(prompt);
 	free_dlistchar(path);
+
 }
 
