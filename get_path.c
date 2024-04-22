@@ -1,7 +1,7 @@
 #include "simple_shell.h"
 
 /**
- * main - gets the path
+ * get_path - gets the path
  *
  * Return: a pointer to the path
  *
@@ -12,7 +12,7 @@ dlistchar_t *get_path(void)
 	dlistchar_t *head;
 
 	head = NULL;
-	
+
 	path = _getenv("PATH");
 	directory = strtok(path, ":");
 	add_dnodechar_end(&head, directory);

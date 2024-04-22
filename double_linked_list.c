@@ -20,7 +20,6 @@ dlistchar_t *add_dnodechar_end(dlistchar_t **head, char *str)
 
 	new->str = str;
 	new->next = NULL;
-	
 
 	if (*head == NULL)
 	{
