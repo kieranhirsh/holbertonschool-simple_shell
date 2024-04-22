@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "simple_shell.h"
 
 /**

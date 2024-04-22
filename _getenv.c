@@ -1,4 +1,4 @@
-#include <stddef.h>
+#include "simple_shell.h"
 
 /**
  * _getenv - returns an environment variable

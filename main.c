@@ -1,4 +1,3 @@
-#include <unistd.h>
 #include "simple_shell.h"
 
 /**
