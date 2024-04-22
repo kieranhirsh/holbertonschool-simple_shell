@@ -35,6 +35,7 @@ dlistchar_t *get_path(void);
 char *_getenv(const char *name);
 dlistchar_t *add_dnodechar_end(dlistchar_t **head, char *str);
 void free_dlistchar(dlistchar_t *head);
+char *read_line_from_stdin(void);
 
 #endif
 
