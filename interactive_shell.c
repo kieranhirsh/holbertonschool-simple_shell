@@ -22,7 +22,7 @@ void interactive_shell(void)
 		prompt = get_command();
 		args = get_args(prompt);
 		execute_command(prompt, args, path);
-		printf("You have chosen: %s", prompt);
+		printf("You have chosen: %s\n", prompt);
 
 		ii = 0;
 		if (args[ii] != NULL)
@@ -37,7 +37,7 @@ void interactive_shell(void)
 
 		free(args);
 
-	} while (strcmp(prompt, "exit\n") != 0);
+	} while (strcmp(prompt, "exit") != 0);
 
 	free(prompt);
 	free_dlistchar(path);
