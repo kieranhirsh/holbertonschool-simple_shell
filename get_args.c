@@ -20,11 +20,11 @@ char **get_args(char *prompt)
 	while ((arg = strtok(NULL, delimiter)) != NULL)
 	{
 		jj = 0;
-		while (arg[jj] != NULL)
+		while (arg[jj] != '\0')
 		{
 			jj += 1;
 			if (arg[jj] == '\n')
-				arg[jj] = NULL;
+				arg[jj] = '\0';
 		}
 
 		arg_list = realloc(arg_list, (ii + 2) * sizeof(char *));

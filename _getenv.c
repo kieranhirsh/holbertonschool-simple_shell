@@ -16,10 +16,10 @@ char *_getenv(const char *name)
 	{
 		jj = 0;
 
-		while ((name[jj] == environ[ii][jj]) && (name[jj] != NULL))
+		while ((name[jj] == environ[ii][jj]) && (name[jj] != '\0'))
 			jj += 1;
 
-		if (name[jj] == NULL)
+		if (name[jj] == '\0')
 		{
 			return (environ[ii] + jj + 1);
 		}

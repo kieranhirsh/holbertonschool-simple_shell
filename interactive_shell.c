@@ -8,7 +8,6 @@ void interactive_shell(void)
 {
 	char *prompt = NULL;
 	char **args;
-	int ii;
 	dlistchar_t *path;
 
 	path = get_path();

@@ -14,23 +14,23 @@ void execute_command(char *command, char **args, dlistchar_t *path)
 	int lenpath, status;
 	int lencommand = 0;
 	struct stat st;
-        pid_t pid, my_pid, parent_pid;
+        pid_t pid;
 
-	while (command[lencommand] != NULL)
+	while (command[lencommand] != '\0')
 	{
 		lencommand += 1;
 		if (command[lencommand] == '\n')
-			command[lencommand] = NULL;
+			command[lencommand] = '\0';
 	}
 
 	do {
 		lenpath = 0;
-		while (path->str[lenpath] != NULL)
+		while (path->str[lenpath] != '\0')
 			lenpath += 1;
 
 		free(filepath);
 		filepath = malloc(sizeof(char) * (lenpath + lencommand + 2));
-		if (filepath == -1)
+		if (filepath == NULL)
 		{
 			free(filepath);
 			perror("error in execute_command: could not malloc filepath correctly");
