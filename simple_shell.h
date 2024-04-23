@@ -21,9 +21,9 @@
  */
 typedef struct dlistchar_s
 {
-        char *str;
-        struct dlistchar_s *prev;
-        struct dlistchar_s *next;
+	char *str;
+	struct dlistchar_s *prev;
+	struct dlistchar_s *next;
 } dlistchar_t;
 
 void interactive_shell(void);
@@ -38,4 +38,3 @@ void free_dlistchar(dlistchar_t *head);
 char *read_line_from_stdin(void);
 
 #endif
-
