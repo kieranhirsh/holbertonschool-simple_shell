@@ -13,13 +13,13 @@ char *get_command(void)
 	char *line = NULL;
 	size_t buffersize = 0;
 
-	if (getline(&line, &buffersize, stdin) == -1) /* if getline fails */
-	{
-		/* avoid memory leaks, and exit with failure */
+	if (getline(&line, &buffersize, stdin) == -1)	/* if getline fails */
+	{						/* avoid memory leaks, and exit with failure */
 		free(line);
+		fprintf(stderr, "error in get_command: getline failed\n");
 		exit(EXIT_FAILURE);
 	}
 
-	return (line);
+	return (line); /* otherwise return the command line prompt */
 
 }
