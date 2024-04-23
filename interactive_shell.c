@@ -26,7 +26,6 @@ void interactive_shell(void)
 
 	free(prompt);
 	free_dlistchar(path);
-	exit(0);
 
 }
 

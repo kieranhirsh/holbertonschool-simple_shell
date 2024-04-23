@@ -14,7 +14,7 @@ void noninteractive_shell(void)
 
 	do {
 		free(prompt);
-		prompt = get_command();
+		prompt = read_line_from_stdin();
 		args = get_args(prompt);
 		execute_command(prompt, args, path);
 
@@ -24,6 +24,5 @@ void noninteractive_shell(void)
 
 	free(prompt);
 	free_dlistchar(path);
-	exit(0);
 
 }
