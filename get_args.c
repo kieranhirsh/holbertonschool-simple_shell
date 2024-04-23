@@ -32,7 +32,7 @@ char **get_args(char *prompt)
 				arg[jj] = '\0';
 		}
 
-		arg_list = realloc(arg_list, (ii + 2) * sizeof(char *));
+		arg_list = realloc(arg_list, sizeof(char *) * (ii + 2));
 		arg_list[ii] = arg;
 
 		ii += 1;
