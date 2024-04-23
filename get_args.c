@@ -15,10 +15,14 @@ char **get_args(char *prompt)
 	int jj;
 
 	arg_list = malloc(sizeof(char *));
+	if (arg_list == NULL)
+	{
+		fprintf(stderr, "error in get_args: couldn't malloc arg_list\n");
+		exit(EXIT_FAILURE);
+	}
 	arg = strtok(prompt, delimiter);
 
-	while ((arg = strtok(NULL, delimiter)) != NULL)
-	{
+	do {
 		jj = 0;
 		while (arg[jj] != '\0')
 		{
@@ -31,7 +35,8 @@ char **get_args(char *prompt)
 		arg_list[ii] = arg;
 
 		ii += 1;
-	}
+
+	} while ((arg = strtok(NULL, delimiter)) != NULL);
 
 	arg_list[ii] = NULL;
 	free(arg);
@@ -39,3 +44,4 @@ char **get_args(char *prompt)
 	return (arg_list);
 
 }
+
