@@ -36,7 +36,6 @@ char *find_command(char *command, dlistchar_t *path)
 		lenpath = 0;
 		while (path->str[lenpath] != '\0')
 			lenpath += 1;
-		free(filepath);
 		filepath = realloc(filepath, sizeof(char) * (lenpath + lencommand + 2));
 		if (filepath == NULL)
 		{
@@ -49,6 +48,7 @@ char *find_command(char *command, dlistchar_t *path)
 			return (filepath);
 		path = path->next;
 	}
+	free(filepath);
 	return (NULL);
 }
 
