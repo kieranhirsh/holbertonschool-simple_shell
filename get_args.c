@@ -2,6 +2,7 @@
 
 /**
  * get_args - converts a command line prompt into individual arguments
+ * @prompt: the command line prompt
  *
  * Return: a pointer to the char storing the arguments
  *

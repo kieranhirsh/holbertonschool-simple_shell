@@ -14,7 +14,7 @@ void execute_command(char *command, char **args, dlistchar_t *path)
 	int lenpath, status;
 	int lencommand = 0;
 	struct stat st;
-        pid_t pid;
+	pid_t pid;
 
 	while (command[lencommand] != '\0')
 	{
@@ -66,7 +66,7 @@ void execute_command(char *command, char **args, dlistchar_t *path)
 		}
 		else
 		{
-                        wait(&status);
+			wait(&status);
 		}
 	}
 
