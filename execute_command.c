@@ -23,7 +23,11 @@ void execute_command(char *command, char **args, dlistchar_t *path)
 			command[lencommand] = '\0';
 	}
 
-	do {
+	filepath = malloc(sizeof(char) * (lencommand + 1));
+	sprintf(filepath, "%s", command);
+
+	while ((stat(filepath, &st) != 0) && (path != NULL))
+	{
 		lenpath = 0;
 		while (path->str[lenpath] != '\0')
 			lenpath += 1;
@@ -40,9 +44,9 @@ void execute_command(char *command, char **args, dlistchar_t *path)
 
 		path = path->next;
 
-	} while ((stat(filepath, &st) != 0) && (path != NULL));
+	}
 
-	if (path == NULL)
+	if (stat(filepath, &st) != 0)
 	{
 		printf("%s: command not found\n", command);
 	}
