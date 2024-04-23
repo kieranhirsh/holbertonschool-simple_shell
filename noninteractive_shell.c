@@ -13,8 +13,6 @@ void noninteractive_shell(void)
 	path = get_path();
 
 	do {
-		printf("$ ");
-
 		free(prompt);
 		prompt = read_line_from_stdin();
 		args = get_args(prompt);

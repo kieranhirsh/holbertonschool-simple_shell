@@ -19,6 +19,7 @@ char *read_line_from_stdin(void)
 {
 	size_t bufsize = 1024, position = 0;
 	char *buffer = malloc(bufsize);
+	char *new_buffer;
 	int ch;
 
 	if (buffer == NULL)
@@ -37,7 +38,7 @@ char *read_line_from_stdin(void)
 		if (position == bufsize)
 		{
 			bufsize *= 2;
-			char *new_buffer = realloc(buffer, bufsize);
+			new_buffer = realloc(buffer, bufsize);
 
 			if (new_buffer == NULL)
 			{
