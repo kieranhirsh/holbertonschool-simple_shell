@@ -29,7 +29,7 @@ char *strtrim(char *str)
 		jj += 1;
 
 	/* find the last non-whitespace character of str */
-       	/* and replace the next character with NULL */
+	/* and replace the next character with NULL */
 	while ((str[jj - 1] == ' ') || (str[jj - 1] == '\n'))
 	{
 		jj -= 1;
