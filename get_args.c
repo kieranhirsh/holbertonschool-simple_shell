@@ -11,11 +11,11 @@ char **get_args(char *prompt)
 {
 	char **arg_list;
 	char *arg;
-	char *delimiter = " ";	/* !! this may edits to allow for more delimiters !! */
-	int ii = 0;
+	char *delimiter = " ";	/* !! this may need edits to allow for more delimiters !! */
+	int ii = 0, buffsize = 256;
 	int jj;
 
-	arg_list = malloc(sizeof(char *));
+	arg_list = malloc(buffsize);
 	if (arg_list == NULL)			/* if malloc fails */
 	{					/* avoid memory leaks, and exit with failure */
 		free(arg_list);
@@ -27,22 +27,16 @@ char **get_args(char *prompt)
 	do {					/* loop through the prompt until the end is reached */
 		jj = 0;
 		while (arg[jj] != '\0')		/* step through current argument */
-		{				/* avoid memory leaks, and exit with failure */
+		{
 			jj += 1;
 			if (arg[jj] == '\n')	/* if string ends with a newline */
-				arg[jj] = '\0';	/*replace it with a NULL character */
+				arg[jj] = '\0';	/* replace it with a NULL character */
 		}
 
-		arg_list = realloc(arg_list, sizeof(char *) * (ii + 2));
-		if (arg_list == NULL)		/* if realloc fails */
-		{
-			free(arg_list);
-			fprintf(stderr, "error in get_args: couldn't realloc arg_list\n");
-			exit(EXIT_FAILURE);
-		}
-		arg_list[ii] = arg;
+		arg_list[ii] = arg;		/* add new argument to the list of arguments */
 
 		ii += 1;
+
 	} while ((arg = strtok(NULL, delimiter)) != NULL);
 
 	arg_list[ii] = NULL;

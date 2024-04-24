@@ -10,44 +10,33 @@
  */
 char *find_command(char *command, dlistchar_t *path)
 {
-	int lencommand = 0;
-	int lenpath;
+	int buffsize = 256;
 	char *filepath = NULL;
 	struct stat st;
 
-	while (command[lencommand] != '\0')
-	{
-		lencommand += 1;
-		if (command[lencommand] == '\n')
-			command[lencommand] = '\0';
-	}
-	filepath = malloc(sizeof(char) * (lencommand + 1));
+	filepath = malloc(buffsize);
 	if (filepath == NULL)
 	{
 		free(filepath);
 		fprintf(stderr, "error in find_command: couldn't malloc filepath\n");
 		exit(EXIT_FAILURE);
 	}
+
 	sprintf(filepath, "%s", command);
+
 	if (stat(filepath, &st) == 0)
 		return (filepath);
+
 	while (path != NULL)
 	{
-		lenpath = 0;
-		while (path->str[lenpath] != '\0')
-			lenpath += 1;
-		filepath = realloc(filepath, sizeof(char) * (lenpath + lencommand + 2));
-		if (filepath == NULL)
-		{
-			free(filepath);
-			fprintf(stderr, "error in find_command: couldn't realloc filepath\n");
-			exit(EXIT_FAILURE);
-		}
 		sprintf(filepath, "%s/%s", path->str, command);
+
 		if (stat(filepath, &st) == 0)
 			return (filepath);
+
 		path = path->next;
 	}
+
 	free(filepath);
 	return (NULL);
 }
