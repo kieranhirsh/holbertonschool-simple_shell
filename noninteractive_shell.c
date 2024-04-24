@@ -16,6 +16,7 @@ void noninteractive_shell(char **env)
 	do {
 		free(prompt);
 		prompt = get_command();
+		prompt = strtrim(prompt);
 		args = get_args(prompt);
 		execute_command(prompt, args, path, env);
 
