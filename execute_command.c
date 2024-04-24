@@ -46,6 +46,7 @@ char *find_command(char *command, dlistchar_t *path)
  * @command: the command
  * @args: the arguments
  * @path: the path
+ * @env: the environment
  *
  */
 void execute_command(char *command, char **args, dlistchar_t *path, char **env)

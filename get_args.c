@@ -11,7 +11,7 @@ char **get_args(char *prompt)
 {
 	char **arg_list;
 	char *arg;
-	char *delimiter = " ";	/* !! this may need edits to allow for more delimiters !! */
+	char *delimiter = " ";	/* !! this may need editing for more delimiters !! */
 	int ii = 0, buffsize = 256;
 	int jj;
 

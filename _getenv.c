@@ -3,25 +3,25 @@
 /**
  * _getenv - returns an environment variable
  * @name: the desired environment variable
+ * @env: the environment
  *
  * Return: the environment variable
  */
-char *_getenv(const char *name)
+char *_getenv(const char *name, char **env)
 {
-	extern char **environ;
 	int ii = 0;
 	int jj;
 
-	while (environ[ii] != NULL)
+	while (env[ii] != NULL)
 	{
 		jj = 0;
 
-		while ((name[jj] == environ[ii][jj]) && (name[jj] != '\0'))
+		while ((name[jj] == env[ii][jj]) && (name[jj] != '\0'))
 			jj += 1;
 
 		if (name[jj] == '\0')
 		{
-			return (environ[ii] + jj + 1);
+			return (env[ii] + jj + 1);
 		}
 
 		ii += 1;

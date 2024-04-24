@@ -2,6 +2,9 @@
 
 /**
  * main - entry point
+ * @argc: number of arguments
+ * @argv: arguments
+ * @env: environment
  *
  * Return: 0, success
  *

@@ -2,6 +2,7 @@
 
 /**
  * interactive_shell - interactive shell
+ * @env: the environment
  *
  */
 void interactive_shell(char **env)
@@ -10,7 +11,7 @@ void interactive_shell(char **env)
 	char **args;
 	dlistchar_t *path;
 
-	path = get_path();
+	path = get_path(env);
 
 	do {
 		printf("$ ");

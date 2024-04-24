@@ -2,6 +2,7 @@
 
 /**
  * noninteractive_shell - non-interactive shell
+ * @env: the environment
  *
  */
 void noninteractive_shell(char **env)
@@ -10,7 +11,7 @@ void noninteractive_shell(char **env)
 	char **args;
 	dlistchar_t *path;
 
-	path = get_path();
+	path = get_path(env);
 
 	do {
 		free(prompt);
