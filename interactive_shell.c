@@ -18,6 +18,7 @@ void interactive_shell(char **env)
 
 		free(prompt);
 		prompt = get_command();
+		prompt = strtrim(prompt);
 		args = get_args(prompt);
 		execute_command(prompt, args, path, env);
 

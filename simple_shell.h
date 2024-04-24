@@ -29,6 +29,7 @@ typedef struct dlistchar_s
 void interactive_shell(char **env);
 void noninteractive_shell(char **env);
 char *get_command(void);
+char *strtrim(char *str);
 char **get_args(char *prompt);
 void execute_command(char *prompt, char **args, dlistchar_t *path, char **env);
 dlistchar_t *get_path(char **env);
