@@ -26,11 +26,11 @@ typedef struct dlistchar_s
 	struct dlistchar_s *next;
 } dlistchar_t;
 
-void interactive_shell(void);
-void noninteractive_shell(void);
+void interactive_shell(char **env);
+void noninteractive_shell(char **env);
 char *get_command(void);
 char **get_args(char *prompt);
-void execute_command(char *prompt, char **args, dlistchar_t *path);
+void execute_command(char *prompt, char **args, dlistchar_t *path, char **env);
 dlistchar_t *get_path(void);
 char *_getenv(const char *name);
 dlistchar_t *add_dnodechar_end(dlistchar_t **head, char *str);

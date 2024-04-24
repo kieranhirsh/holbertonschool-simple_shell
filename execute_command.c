@@ -48,7 +48,7 @@ char *find_command(char *command, dlistchar_t *path)
  * @path: the path
  *
  */
-void execute_command(char *command, char **args, dlistchar_t *path)
+void execute_command(char *command, char **args, dlistchar_t *path, char **env)
 {
 	char *filepath = NULL;
 	int status;
@@ -65,7 +65,7 @@ void execute_command(char *command, char **args, dlistchar_t *path)
 		pid = fork();
 		if (pid == 0)
 		{
-			if (execvp(filepath, args) == -1)
+			if (execve(filepath, args, env) == -1)
 			{
 				fprintf(stderr, "error in execute_command: execve failed\n");
 				exit(EXIT_FAILURE);

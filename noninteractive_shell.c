@@ -4,7 +4,7 @@
  * noninteractive_shell - non-interactive shell
  *
  */
-void noninteractive_shell(void)
+void noninteractive_shell(char **env)
 {
 	char *prompt = NULL;
 	char **args;
@@ -16,7 +16,7 @@ void noninteractive_shell(void)
 		free(prompt);
 		prompt = get_command();
 		args = get_args(prompt);
-		execute_command(prompt, args, path);
+		execute_command(prompt, args, path, env);
 
 		free(args);
 

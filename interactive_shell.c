@@ -4,7 +4,7 @@
  * interactive_shell - interactive shell
  *
  */
-void interactive_shell(void)
+void interactive_shell(char **env)
 {
 	char *prompt = NULL;
 	char **args;
@@ -18,7 +18,7 @@ void interactive_shell(void)
 		free(prompt);
 		prompt = get_command();
 		args = get_args(prompt);
-		execute_command(prompt, args, path);
+		execute_command(prompt, args, path, env);
 
 		free(args);
 
