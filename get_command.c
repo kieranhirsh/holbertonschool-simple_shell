@@ -12,22 +12,25 @@ char *get_command(void)
 {
 	char *line = NULL;
 	size_t buffersize = 0;
+	ssize_t charsread;
 
-	if (getline(&line, &buffersize, stdin) == -1)	/* if getline fails */
-	{						/* avoid memory leaks, and exit with failure */
-		if (feof(stdin))			/* if end of file is reached */
-		{					/* feof function might not be allowed by checker*/
+	charsread = getline(&line, &buffersize, stdin);
+
+	if (charsread < 0)				/* if getline fails */
+	{
+		if (charsread == EOF)			/* if end of file is reached */
+		{					/* avoid memory leaks and exit with success */
 			free(line);
 			exit(EXIT_SUCCESS);
 		}
 		else					/* if getline failed for other reasons */
-		{
+		{					/* avoid memory leaks and exit with failure */
 			free(line);
 			fprintf(stderr, "error in get_command: getline failed\n");
 			exit(EXIT_FAILURE);
 		}
 	}
 
-	return (line); /* otherwise return the command line prompt */
+	return (line);					/* on success, return the command line prompt */
 
 }
