@@ -50,6 +50,7 @@ void free_dlistchar(dlistchar_t *head)
 	if (head->next != NULL)
 		free_dlistchar(head->next);
 
+	free(head->str);
 	free(head);
 
 }
