@@ -12,6 +12,11 @@ char *strtrim(char *str)
 	char *temp;
 	int ii = 0, jj = 0;
 
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+
 	temp = malloc(sizeof(str));
 	if (temp == NULL)	/* if malloc failed */
 	{			/* avoid memory leaks and exit with failure*/
@@ -21,7 +26,7 @@ char *strtrim(char *str)
 	}
 
 	/* find the first non-whitespace character of str */
-	while ((*(str + ii) == ' ') || (*(str + ii) == '\n'))
+	while ((*(str + ii) == ' ') || (*(str + ii) == '\n') || (*(str + ii) == '\t'))
 		ii += 1;
 
 	/* find the length of str */
@@ -30,7 +35,7 @@ char *strtrim(char *str)
 
 	/* find the last non-whitespace character of str */
 	/* and replace the next character with NULL */
-	while ((str[jj - 1] == ' ') || (str[jj - 1] == '\n'))
+	while ((str[jj - 1] == ' ') || (str[jj - 1] == '\n') || (str[jj - 1] == '\t'))
 	{
 		jj -= 1;
 	}

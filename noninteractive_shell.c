@@ -17,8 +17,11 @@ void noninteractive_shell(char **env)
 		free(prompt);
 		prompt = get_command();
 		prompt = strtrim(prompt);
-		args = get_args(prompt);
-		execute_command(prompt, args, path, env);
+		if (strcmp(prompt, "") != 0)	/* if prompt is not empty */
+		{
+			args = get_args(prompt);
+			execute_command(prompt, args, path, env);
+		}
 
 		free(args);
 
