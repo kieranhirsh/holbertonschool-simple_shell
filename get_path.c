@@ -7,21 +7,26 @@
  * Return: a pointer to the path
  *
  */
-dlistchar_t *get_path(char **env)
+char **get_path(char **env)
 {
 	char *path, *directory;
-	dlistchar_t *head;
+	char **path_array;
+	int buffsize = 256, ii = 0;
 
-	head = NULL;
+	path_array = malloc(sizeof(char *) * buffsize);
 
 	path = _getenv("PATH", env);
 	directory = strtok(path, ":");
-	add_dnodechar_end(&head, directory);
+	path_array[ii] = directory;
 
 	while ((directory = strtok(NULL, ":")) != NULL)
-		add_dnodechar_end(&head, directory);
+	{
+		ii += 1;
+		path_array[ii] = directory;
+	}
+	path_array[ii + 1] = '\0';
 
-	return (head);
+	return (path_array);
 
 }
 

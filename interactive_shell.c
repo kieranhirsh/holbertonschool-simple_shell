@@ -9,7 +9,7 @@ void interactive_shell(char **env)
 {
 	char *prompt = NULL;
 	char **args;
-	dlistchar_t *path;
+	char **path;
 
 	path = get_path(env);
 
@@ -28,7 +28,7 @@ void interactive_shell(char **env)
 		{	/* avoid memory leaks and exit the shell */
 			free(prompt);
 			free(args);
-			free_dlistchar(path);
+			free(path);
 			exit(EXIT_SUCCESS);
 		}
 		execute_command(prompt, args, path, env);

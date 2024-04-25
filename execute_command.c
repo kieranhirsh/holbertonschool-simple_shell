@@ -8,9 +8,9 @@
  * Return: a pointer to a string containing the command to run, if found
  *         NULL, if not found
  */
-char *find_command(char *command, dlistchar_t *path)
+char *find_command(char *command, char **path)
 {
-	int buffsize = 256;
+	int buffsize = 256, ii = 0;
 	char *filepath = NULL;
 	struct stat st;
 
@@ -27,14 +27,14 @@ char *find_command(char *command, dlistchar_t *path)
 	if (stat(filepath, &st) == 0)
 		return (filepath);
 
-	while (path != NULL)
+	while (path[ii] != NULL)
 	{
-		sprintf(filepath, "%s/%s", path->str, command);
+		sprintf(filepath, "%s/%s", path[ii], command);
 
 		if (stat(filepath, &st) == 0)
 			return (filepath);
 
-		path = path->next;
+		ii += 1;
 	}
 
 	free(filepath);
@@ -49,7 +49,7 @@ char *find_command(char *command, dlistchar_t *path)
  * @env: the environment
  *
  */
-void execute_command(char *command, char **args, dlistchar_t *path, char **env)
+void execute_command(char *command, char **args, char **path, char **env)
 {
 	char *filepath = NULL;
 	int status;

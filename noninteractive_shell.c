@@ -9,7 +9,7 @@ void noninteractive_shell(char **env)
 {
 	char *prompt = NULL;
 	char **args;
-	dlistchar_t *path;
+	char **path;
 
 	path = get_path(env);
 
@@ -25,7 +25,7 @@ void noninteractive_shell(char **env)
 	} while (strcmp(prompt, "exit") != 0);
 
 	free(prompt);
-	free_dlistchar(path);
+	free(path);
 	exit(EXIT_SUCCESS);
 
 }
