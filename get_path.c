@@ -16,6 +16,9 @@ char **get_path(char **env)
 	path_array = malloc(sizeof(char *) * buffsize);
 
 	path = _getenv("PATH", env);
+	if (path == NULL)
+		return (NULL);
+
 	directory = strtok(path, ":");
 	path_array[ii] = directory;
 
