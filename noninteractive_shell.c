@@ -7,11 +7,10 @@
  */
 void noninteractive_shell(char **env)
 {
-	char *prompt = NULL;
+	char *prompt;
 	char **args, **path;
 
 	do {
-		free(prompt);
 		prompt = get_command();
 		prompt = strtrim(prompt);
 		if (strcmp(prompt, "") != 0)		/* if prompt is not empty */
@@ -38,6 +37,7 @@ void noninteractive_shell(char **env)
 		{					/* do nothing */
 		}
 
+		free(prompt);
 		free(args);
 
 	} while (strcmp(prompt, "exit") != 0);

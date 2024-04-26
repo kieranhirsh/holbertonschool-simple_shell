@@ -7,7 +7,7 @@
  */
 void interactive_shell(char **env)
 {
-	char *prompt = NULL;
+	char *prompt;
 	char **args, **path;
 
 
@@ -16,7 +16,6 @@ void interactive_shell(char **env)
 		printf("$ ");	/* print prompt symbol */
 
 		/* get the command from the user input */
-		free(prompt);
 		prompt = get_command();
 		prompt = strtrim(prompt);
 		if (strcmp(prompt, "") != 0)		/* if prompt is not empty */
@@ -42,6 +41,7 @@ void interactive_shell(char **env)
 		{					/* do nothing */
 		}
 
+		free(prompt);
 		free(args);
 
 	}
