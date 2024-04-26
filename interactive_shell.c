@@ -10,7 +10,6 @@ void interactive_shell(char **env)
 	char *prompt;
 	char **args, **path;
 
-
 	while (1)	/* this loops infinitely until user exits the shell */
 	{
 		printf("$ ");	/* print prompt symbol */

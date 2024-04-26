@@ -2,6 +2,21 @@
 #include <stdlib.h>
 #include "simple_shell.h"
 
+char *line = NULL;
+
+/**
+ * handle_sigint_command - frees the memory whent the process is killed
+ * @signum: the kill signal
+ *
+ */
+void handle_sigint_command(int signum)
+{
+	if (signum > 0)
+		free(line);
+
+	exit(EXIT_SUCCESS);
+}
+
 /**
  * get_command - reads the command line prompt
  *
@@ -10,9 +25,10 @@
  */
 char *get_command(void)
 {
-	char *line = NULL;
 	size_t buffersize = 0;
 	ssize_t charsread;
+
+	signal(SIGINT, handle_sigint_command);
 
 	charsread = getline(&line, &buffersize, stdin);
 
