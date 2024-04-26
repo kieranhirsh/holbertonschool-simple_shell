@@ -29,8 +29,7 @@ void interactive_shell(char **env)
 			if (strcmp(prompt, "exit") == 0)	/* if exit called */
 			{	/* avoid memory leaks and exit the shell */
 				free(prompt);
-				free(args);
-				free(path);
+				free_path(path);
 				exit(EXIT_SUCCESS);
 			}
 			else
@@ -42,9 +41,9 @@ void interactive_shell(char **env)
 		{					/* do nothing */
 		}
 
-		free(args);
-
 	}
-
+	free(prompt);
+	free_path(path);
+	exit(EXIT_SUCCESS);
 }
 
