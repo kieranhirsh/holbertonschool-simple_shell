@@ -13,8 +13,7 @@ void noninteractive_shell(char **env)
 
 	path = get_path(env);
 
-	while (1)
-	{
+	do {
 		free(prompt);
 		prompt = get_command();
 		prompt = strtrim(prompt);
@@ -41,7 +40,7 @@ void noninteractive_shell(char **env)
 
 		free(args);
 
-	}
+	} while (strcmp(prompt, "exit") != 0);
 
 	free(prompt);
 	free(path);
