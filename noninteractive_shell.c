@@ -9,6 +9,7 @@ void noninteractive_shell(char **env)
 {
 	char *prompt;
 	char **args, **path;
+	int ii;
 
 	while (1)	/* this loops infinitely until user exits the shell */
 	{
@@ -25,6 +26,15 @@ void noninteractive_shell(char **env)
 				free(prompt);
 				free(args);
 				exit(EXIT_SUCCESS);
+			}
+			else if (strcmp(prompt, "env") == 0)	/* in env called */
+			{
+				ii = 0;
+				while (env[ii] != NULL)
+				{
+					printf("%s\n", env[ii]);
+					ii += 1;
+				}
 			}
 			else
 			{
