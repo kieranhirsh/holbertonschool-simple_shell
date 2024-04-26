@@ -8,10 +8,8 @@
 void interactive_shell(char **env)
 {
 	char *prompt = NULL;
-	char **args;
-	char **path;
+	char **args, **path;
 
-	path = get_path(env);
 
 	while (1)	/* this loops infinitely until user exits the shell */
 	{
@@ -30,12 +28,14 @@ void interactive_shell(char **env)
 			{	/* avoid memory leaks and exit the shell */
 				free(prompt);
 				free(args);
-				free(path);
 				exit(EXIT_SUCCESS);
 			}
 			else
 			{
+				path = get_path(env);
 				execute_command(prompt, args, path, env);
+				free(path[0]);
+				free(path);
 			}
 		}
 		else					/* if prompt is empty */

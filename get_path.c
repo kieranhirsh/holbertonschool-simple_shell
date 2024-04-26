@@ -9,14 +9,16 @@
  */
 char **get_path(char **env)
 {
-	char *path, *directory;
+	char *path, *directory, *temp;
 	char **path_array;
 	int buffsize = 256, ii = 0;
 
 	path_array = malloc(sizeof(char *) * buffsize);
+	temp = malloc(sizeof(char) * buffsize);
 
 	path = _getenv("PATH", env);
-	directory = strtok(path, ":");
+	strcpy(temp, path);
+	directory = strtok(temp, ":");
 	path_array[ii] = directory;
 
 	while ((directory = strtok(NULL, ":")) != NULL)

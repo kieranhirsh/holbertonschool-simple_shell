@@ -8,10 +8,7 @@
 void noninteractive_shell(char **env)
 {
 	char *prompt = NULL;
-	char **args;
-	char **path;
-
-	path = get_path(env);
+	char **args, **path;
 
 	do {
 		free(prompt);
@@ -31,7 +28,10 @@ void noninteractive_shell(char **env)
 			}
 			else
 			{
+				path = get_path(env);
 				execute_command(prompt, args, path, env);
+				free(path[0]);
+				free(path);
 			}
 		}
 		else					/* if prompt is empty */
