@@ -1,7 +1,7 @@
 #include "simple_shell.h"
 
 /**
- * noninteractive_shell - non-interactive shell
+ * noninteractive_shell - noninteractive shell
  * @env: the environment
  *
  */
@@ -10,7 +10,9 @@ void noninteractive_shell(char **env)
 	char *prompt;
 	char **args, **path;
 
-	do {
+	while (1)	/* this loops infinitely until user exits the shell */
+	{
+		/* get the command from the user input */
 		prompt = get_command();
 		prompt = strtrim(prompt);
 		if (strcmp(prompt, "") != 0)		/* if prompt is not empty */
@@ -22,7 +24,6 @@ void noninteractive_shell(char **env)
 			{	/* avoid memory leaks and exit the shell */
 				free(prompt);
 				free(args);
-				free(path);
 				exit(EXIT_SUCCESS);
 			}
 			else
@@ -40,10 +41,7 @@ void noninteractive_shell(char **env)
 		free(prompt);
 		free(args);
 
-	} while (strcmp(prompt, "exit") != 0);
-
-	free(prompt);
-	free(path);
-	exit(EXIT_SUCCESS);
+	}
 
 }
+
