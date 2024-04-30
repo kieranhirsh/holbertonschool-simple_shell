@@ -10,14 +10,14 @@
 char *strtrim(char *str)
 {
 	char *temp;
-	int ii = 0, jj = 0;
+	int ii = 0, jj = 0, buffsize = 256;
 
 	if (str == NULL)
 	{
 		return (NULL);
 	}
 
-	temp = malloc(sizeof(str) + 1);
+	temp = malloc(sizeof(char) * buffsize);
 	if (temp == NULL)	/* if malloc failed */
 	{			/* avoid memory leaks and exit with failure*/
 		free(temp);
