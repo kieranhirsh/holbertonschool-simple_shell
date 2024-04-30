@@ -30,7 +30,10 @@ char *strtrim(char *str)
 		ii += 1;
 
 	if (str[ii] == '\0')
+	{
+		free(temp);
 		return (NULL);
+	}
 
 	/* find the length of str */
 	while (str[jj] != '\0')
