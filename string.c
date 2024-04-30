@@ -26,8 +26,11 @@ char *strtrim(char *str)
 	}
 
 	/* find the first non-whitespace character of str */
-	while ((*(str + ii) == ' ') || (*(str + ii) == '\n') || (*(str + ii) == '\t'))
+	while ((str[ii] == ' ') || (str[ii] == '\n') || (str[ii] == '\t'))
 		ii += 1;
+
+	if (str[ii] == '\0')
+		return (NULL);
 
 	/* find the length of str */
 	while (str[jj] != '\0')

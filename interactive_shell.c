@@ -18,7 +18,7 @@ void interactive_shell(char **env)
 		/* get the command from the user input */
 		prompt = get_command();
 		prompt = strtrim(prompt);
-		if (strcmp(prompt, "") != 0)		/* if prompt is not empty */
+		if (prompt != NULL)				/* if prompt is not empty */
 		{
 			args = get_args(prompt);
 
@@ -45,13 +45,14 @@ void interactive_shell(char **env)
 				free(path[0]);
 				free(path);
 			}
+
+			free(args);
 		}
 		else					/* if prompt is empty */
 		{					/* do nothing */
 		}
 
 		free(prompt);
-		free(args);
 
 	}
 
