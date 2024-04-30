@@ -31,6 +31,7 @@ char *strtrim(char *str)
 
 	if (str[ii] == '\0')
 	{
+		free(str);
 		free(temp);
 		return (NULL);
 	}
