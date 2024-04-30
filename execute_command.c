@@ -27,6 +27,12 @@ char *find_command(char *command, char **path)
 	if (stat(filepath, &st) == 0)
 		return (filepath);
 
+	if (path == NULL)
+	{
+		free(filepath);
+		return (NULL);
+	}
+
 	while (path[ii] != NULL)
 	{
 		sprintf(filepath, "%s/%s", path[ii], command);

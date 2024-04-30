@@ -42,8 +42,11 @@ void interactive_shell(char **env)
 			{
 				path = get_path(env);
 				execute_command(prompt, args, path, env);
-				free(path[0]);
-				free(path);
+				if (path != NULL)
+				{
+					free(path[0]);
+					free(path);
+				}
 			}
 
 			free(args);
