@@ -17,7 +17,7 @@ char *strtrim(char *str)
 		return (NULL);
 	}
 
-	temp = malloc(sizeof(str));
+	temp = malloc(sizeof(str) + 1);
 	if (temp == NULL)	/* if malloc failed */
 	{			/* avoid memory leaks and exit with failure*/
 		free(temp);
