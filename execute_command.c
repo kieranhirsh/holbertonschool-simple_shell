@@ -65,7 +65,8 @@ void execute_command(char *command, char **args, char **path, char **env)
 
 	if (filepath == NULL)
 	{
-		printf("%s: command not found\n", command);
+		perror("Error");
+		/*printf("%s: command not found\n", command);*/
 	}
 	else
 	{
