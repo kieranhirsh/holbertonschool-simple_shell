@@ -12,16 +12,31 @@ Additionally, our shell will be designed to accept both interactive and non-inte
 
 ## Installation
 
+To install, clone this repository using the following line of code:
+```sh
+git clone https://github.com/kieranhirsh/holbertonschool-simple_shell.git
+```
+
+## Usage
+
+**1. Compilation**<br>
 Compile using the following line of code:
 ```sh
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 
-## Usage
-
+**2. Run the shell**<br>
+You can run the shell from the command line:
 ```sh
-//code
+./hsh
 ```
+
+**3. User Prompt**<br>
+A ```$``` will be displayed, awaiting for a command to be inputed fom the user:
+```bash
+$ {command}
+```
+
 
 ## Features
 
